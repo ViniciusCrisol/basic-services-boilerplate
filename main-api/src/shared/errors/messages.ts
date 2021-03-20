@@ -17,3 +17,13 @@ export const authenticationFail = {
   status: 401,
   message: 'Error, incorrect email/password combination!',
 };
+
+export const jwtIsMissing = {
+  status: 401,
+  message: 'Error, JWT token is missing!',
+};
+
+export const jwtIsInvalid = {
+  status: 401,
+  message: 'Error, JWT token is invalid!',
+};
