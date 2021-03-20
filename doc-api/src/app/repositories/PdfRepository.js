@@ -18,8 +18,9 @@ class PdfRepository {
 
   async getPdfData(userId, template) {
     if (template === 'users-report') {
-      const attributes = ['name'];
-      const response = await User.findByPk(userId, { attributes });
+      const response = await User.findByPk(userId, {
+        attributes: ['name'],
+      });
       if (!response) return undefined;
 
       const { name } = response.dataValues;

@@ -14,8 +14,9 @@ class EmailRepository {
 
   async getEmailData(userId, template) {
     if (template === 'welcome') {
-      const attributes = ['name', 'email'];
-      const response = await User.findByPk(userId, { attributes });
+      const response = await User.findByPk(userId, {
+        attributes: ['name', 'email'],
+      });
       if (!response) return undefined;
 
       const { name, email } = response.dataValues;
