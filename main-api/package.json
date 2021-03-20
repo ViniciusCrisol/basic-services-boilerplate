@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "dev:server": "ts-node-dev --transpile-only -r tsconfig-paths/register --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "dev": "ts-node-dev --transpile-only -r tsconfig-paths/register --ignore-watch node_modules src/shared/infra/http/server.ts",
     "test": "jest"
   },
   "dependencies": {
