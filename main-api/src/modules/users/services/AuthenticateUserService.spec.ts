@@ -1,13 +1,13 @@
 import AppError from '@shared/errors/AppError';
 
-import FakeMailProvider from '@shared/container/providers/MailProvider/fakes/FakeMailProvider';
+import FakeBackofficeProvider from '@shared/container/providers/BackofficeProvider/fakes/FakeBackofficeProvider';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import AuthenticateUserService from './AuthenticateUserService';
 import CreateUserService from './CreateUserService';
 import User from '../infra/typeorm/entities/User';
 
-let fakeMailProvider: FakeMailProvider;
+let fakeBackofficeProvider: FakeBackofficeProvider;
 let fakeHashProvider: FakeHashProvider;
 let fakeUsersRepository: FakeUsersRepository;
 let authenticateUser: AuthenticateUserService;
@@ -16,14 +16,14 @@ let user: User;
 
 describe('Authenticate User', () => {
   beforeEach(async () => {
-    fakeMailProvider = new FakeMailProvider();
+    fakeBackofficeProvider = new FakeBackofficeProvider();
     fakeHashProvider = new FakeHashProvider();
     fakeUsersRepository = new FakeUsersRepository();
 
     createUser = new CreateUserService(
       fakeUsersRepository,
       fakeHashProvider,
-      fakeMailProvider,
+      fakeBackofficeProvider,
     );
 
     authenticateUser = new AuthenticateUserService(

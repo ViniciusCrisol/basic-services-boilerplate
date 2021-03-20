@@ -1,6 +1,9 @@
 import { container } from 'tsyringe';
 
-import IMailProvider from './MailProvider/models/IMailProvider';
-import MailProvider from './MailProvider/implementations/MailProvider';
+import IBackofficeProvider from './BackofficeProvider/models/IBackofficeProvider';
+import BackofficeProvider from './BackofficeProvider/implementations/BackofficeProvider';
 
-container.registerSingleton<IMailProvider>('MailProvider', MailProvider);
+container.registerSingleton<IBackofficeProvider>(
+  'BackofficeProvider',
+  BackofficeProvider,
+);

@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
+import IBackofficeProvider from '@shared/container/providers/BackofficeProvider/models/IBackofficeProvider';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 import IUsersRepository from '../repositories/IUsersRepository';
 import User from '../infra/typeorm/entities/User';
@@ -21,8 +21,8 @@ class CreateUserService {
     @inject('HashProvider')
     private hashProvider: IHashProvider,
 
-    @inject('MailProvider')
-    private mailProvider: IMailProvider,
+    @inject('BackofficeProvider')
+    private backofficeProvider: IBackofficeProvider,
   ) {}
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
@@ -38,7 +38,7 @@ class CreateUserService {
       password: hashedPassword,
     });
 
-    this.mailProvider.sendWelcomeMail(user.id);
+    this.backofficeProvider.sendWelcomeMail(user.id);
 
     return user;
   }

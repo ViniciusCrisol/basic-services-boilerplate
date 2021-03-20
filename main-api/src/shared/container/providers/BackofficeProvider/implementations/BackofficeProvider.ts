@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { injectable } from 'tsyringe';
 
-import IMailProvider from '../models/IMailProvider';
+import IBackofficeProvider from '../models/IBackofficeProvider';
 
 @injectable()
-export default class MailProvider implements IMailProvider {
+export default class MailProvider implements IBackofficeProvider {
   public async sendWelcomeMail(userId: string): Promise<void> {
     axios.post(`http://localhost:8081/send/email/${userId}`, {
       template: 'welcome',

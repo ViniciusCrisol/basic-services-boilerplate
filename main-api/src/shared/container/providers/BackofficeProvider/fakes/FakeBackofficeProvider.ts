@@ -1,10 +1,10 @@
-import IMailProvider from '../models/IMailProvider';
+import IBackofficeProvider from '../models/IBackofficeProvider';
 
-class FakeMailProvider implements IMailProvider {
+class FakeBackofficeProvider implements IBackofficeProvider {
   public async sendWelcomeMail(userId: string): Promise<void> {
     const emailMessage = `Welcome ${userId}!`;
     return emailMessage ? undefined : undefined;
   }
 }
 
-export default FakeMailProvider;
+export default FakeBackofficeProvider;
