@@ -11,26 +11,19 @@ class PdfRepository {
   }
 
   getPdfTemplate(template) {
-    switch (template) {
-      case 'users-report':
-        return this.joinTemplatePath('users_report.ejs');
-      default:
-        return undefined;
+    if (template === 'users-report') {
+      return this.joinTemplatePath('users_report.ejs');
     }
   }
 
   async getPdfData(userId, template) {
-    switch (template) {
-      case 'users-report':
-        const response = await User.findByPk(userId, {
-          attributes: ['name'],
-        });
-        if (!response) return undefined;
+    if (template === 'users-report') {
+      const attributes = ['name'];
+      const response = await User.findByPk(userId, { attributes });
+      if (!response) return undefined;
 
-        const { name } = response.dataValues;
-        return { name };
-      default:
-        return undefined;
+      const { name } = response.dataValues;
+      return { name };
     }
   }
 }

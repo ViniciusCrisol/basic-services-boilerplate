@@ -7,27 +7,19 @@ class EmailRepository {
   }
 
   getEmailTemplate(template) {
-    switch (template) {
-      case 'welcome':
-        return this.joinTemplatePath('welcome.ejs');
-      default:
-        return undefined;
+    if (template === 'welcome') {
+      return this.joinTemplatePath('welcome.ejs');
     }
   }
 
   async getEmailData(userId, template) {
-    switch (template) {
-      case 'welcome':
-        const response = await User.findByPk(userId, {
-          attributes: ['name', 'email'],
-        });
-        if (!response) return undefined;
+    if (template === 'welcome') {
+      const attributes = ['name', 'email'];
+      const response = await User.findByPk(userId, { attributes });
+      if (!response) return undefined;
 
-        const { name, email } = response.dataValues;
-        return { name, to: email };
-
-      default:
-        return undefined;
+      const { name, email } = response.dataValues;
+      return { name, to: email };
     }
   }
 
@@ -38,8 +30,6 @@ class EmailRepository {
         subject: '<no-reply> Hello, welcome!',
       };
     }
-
-    return undefined;
   }
 }
 
