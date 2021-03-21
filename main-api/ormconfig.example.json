@@ -2,11 +2,11 @@
   {
     "name": "default",
     "type": "postgres",
-    "host": "localhost",
+    "host": "",
     "port": 5432,
-    "username": "postgres",
-    "password": "docker",
-    "database": "services-api",
+    "username": "",
+    "password": "",
+    "database": "",
     "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
     "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
     "cli": {

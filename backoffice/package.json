@@ -1,8 +1,7 @@
 {
-  "name": "doc-api",
+  "name": "backoffice",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/ViniciusCrisol/doc-api-boilerplate.git",
   "license": "MIT",
   "scripts": {
     "dev": "node -r sucrase/register src/app.js"
